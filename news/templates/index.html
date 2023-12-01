@@ -10,33 +10,34 @@
                 <div class="row">
                     <div class="col-md-6 tn-left">
                         <div class="tn-img">
-                            <img src="{% static 'img/top-news-1.jpg' %}" />
+                            <img src="{{ most_new.img.url }}" />
                             <div class="tn-content">
                                 <div class="tn-content-inner">
-                                    <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                    <a class="tn-title" href="">Lorem ipsum dolor sit amet adipiscing elit</a>
+                                    <a class="tn-date" href="{% url 'new_detail' most_new.id %}"><i class="far fa-clock"></i>{{ most_new.update_at }}</a>
+                                    <a class="tn-title" href="{% url 'new_detail' most_new.id %}">{{ most_new.title|slice:'0:20' }}...</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 tn-right">
                         <div class="row">
+                            {% for new in most_news %}
                             <div class="col-md-6">
-                                {% for new in most_news %}
+                                
 
                                     <div class="tn-img">
-                                        <img src=" {% static 'img/top-news-2.jpg' %} " />
+                                        <img src=" {{ new.img.url }} " />
                                         <div class="tn-content">
                                             <div class="tn-content-inner">
-                                                <a class="tn-date" href=""><i class="far fa-clock"></i>{{ most_news.update_at }}</a>
-                                                <a class="tn-title" href="">{{ most_news.title|slice:'0:20' }}...</a>
+                                                <a class="tn-date" href="{% url 'new_detail' new.id %}"><i class="far fa-clock"></i>{{ new.update_at }}</a>
+                                                <a class="tn-title" href="{% url 'new_detail' new.id %}">{{ new.title|slice:'0:20' }}...</a>
                                             </div>
                                         </div>
                                     </div>
-                                {% endfor %}
+                                
 
                             </div>
-                            
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

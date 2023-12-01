@@ -28,9 +28,8 @@ class HomePage(ListView):
         entertainment = News.objects.filter(category__name='Entertainment').order_by('-create_at')[:4]
         latest_news = News.objects.all().order_by('-create_at')[1:6]
         latest_new = News.objects.all().order_by('-create_at').first()
-        # most_viewed_categorys = Category.objects.all().order_by('-get_hit_count')[4]
-        # most_viewed_category = Category.objects.all().order_by('-get_hit_count').first()
-        # most_news = News.objects.all().order_by('-view_count')[:4]
+        most_news = News.objects.all().order_by('-view_count')[1:5]
+        most_new = News.objects.all().order_by('-view_count').first()
 
 
         
@@ -48,9 +47,8 @@ class HomePage(ListView):
             'users': User.objects.all(),
             'latest_news': latest_news,
             'latest_new': latest_new,
-            # 'most_viewed_categorys': most_viewed_categorys,
-            # 'most_viewed_category': most_viewed_category,
-            # "most_news": most_news,
+            "most_news": most_news,
+            'most_new': most_new,
 
 
         }
@@ -63,7 +61,6 @@ def addnewsview(request):
         form = AddNewsForms(request.POST, request.FILES)
         if form.is_valid():
             form.instance.user = request.user
-            # form.instance.slug = request.slug
             form.save()
             return redirect('add_new')
 
@@ -81,9 +78,22 @@ class NewsDetailView(HitCountDetailView):
     context_object_name = 'new_detail'
     count_hit = True
 
-    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-        print("salom")
-        return super().get(request, *args, **kwargs)
+    # def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+    #     #  print(kwargs)
+
+    #      context = {
+    #         'categorys': Category.objects.all(),
+    #         'tags': Tags.objects.all(),
+    #         'users': User.objects.all(),
+    #         # 'new_detail': News.object.get(id = kwargs.pk)
+
+    #     }
+    #      return context
+
+
+    # def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+    #     print("salom")
+    #     return super().get(request, *args, **kwargs)
 
 class NewsDeleteView(LoginRequiredMixin, UserPassesTestMixin,  DeleteView ):
     model = News
