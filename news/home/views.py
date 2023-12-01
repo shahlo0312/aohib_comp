@@ -30,7 +30,7 @@ class HomePage(ListView):
         latest_new = News.objects.all().order_by('-create_at').first()
         # most_viewed_categorys = Category.objects.all().order_by('-get_hit_count')[4]
         # most_viewed_category = Category.objects.all().order_by('-get_hit_count').first()
-        most_news = News.objects.all().order_by('-view_count')[:4]
+        # most_news = News.objects.all().order_by('-view_count')[:4]
 
 
         
@@ -50,7 +50,7 @@ class HomePage(ListView):
             'latest_new': latest_new,
             # 'most_viewed_categorys': most_viewed_categorys,
             # 'most_viewed_category': most_viewed_category,
-            "most_news": most_news,
+            # "most_news": most_news,
 
 
         }
