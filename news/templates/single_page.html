@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+{% load hitcount_tags %}
+        <div class="m-4">
+            <div class="breadcrumb-wrap">
+                    <div class="container-fluid">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">News</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Breadcrumb End -->
+
+
+                <!-- Single News Start-->
+                <div class="single-news">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="sn-img">
+                                    <img src="{{ new_detail.img.url }}" />
+                                </div>
+                                <div class="sn-content">
+                                    <a class="sn-title" href="">{{ new_detail.title }}</a>
+                                    <a class="sn-date mb-1" href=""><i class="far fa-clock"></i>{{ new_detail.update_at }}</a>
+                                    
+                                    
+                                    <p class="mt-2">
+                                        {{ new_detail.body }}
+                                    </p>
+                                    <!-- {# the primary key for the hitcount object #} -->
+                                    <span>Author: <i>{{ new_detail.user }}</i> </span>
+
+                                    
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single News End-->
+                <a href="{% url 'home' %}">Ortga qaytish</a>
+                {% if request.user == new_detail.user  or request.user.is_superuser %}
+                <a class="sn-title bg-dark" href="{% url 'new_delete' new_detail.id %}">O`chirish</a>
+                <a class="sn-title " href="{% url 'new_update' new_detail.id %}">Yangilash</a>
+                
+
+                {% endif %}
+
+        </div>
+
+{% endblock content %}    
+        
+    

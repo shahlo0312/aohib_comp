@@ -1,0 +1,198 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block content %}
+
+
+        <!-- Top News Start-->
+        <div class="top-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 tn-left">
+                        <div class="tn-img">
+                            <img src="{% static 'img/top-news-1.jpg' %}" />
+                            <div class="tn-content">
+                                <div class="tn-content-inner">
+                                    <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
+                                    <a class="tn-title" href="">Lorem ipsum dolor sit amet adipiscing elit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 tn-right">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {% for new in most_news %}
+
+                                    <div class="tn-img">
+                                        <img src=" {% static 'img/top-news-2.jpg' %} " />
+                                        <div class="tn-content">
+                                            <div class="tn-content-inner">
+                                                <a class="tn-date" href="{% url 'new_detail' most_news.id %}"><i class="far fa-clock"></i>{{ most_news.update_at }}</a>
+                                                <a class="tn-title" href="{% url 'new_detail' most_news.id %}">{{ most_news.title|slice:'0:20' }}...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top News End-->
+
+
+        <!-- Category News Start-->
+        <div class="cat-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Sports</h2>
+                        <div class="row cn-slider">
+                            {% for news_sport in news_sport %}
+                            <div class="col-md-6">
+                                <div class="cn-img">
+                                    <img src="{{ news_sport.img.url }}" />
+                                    <div class="cn-content">
+                                        <div class="cn-content-inner">
+                                            <a class="cn-date" href="{% url 'new_detail' news_sport.id %}"><i class="far fa-clock"></i>{{ news_sport.update_at }}</a>
+                                            <a class="cn-title" href="{% url 'new_detail' news_sport.id %}">{{ news_sport.title|slice:'0:20' }}...</a>
+                                            <a class="cn-title" href="{% url 'new_detail' news_sport.id %}">{{ news_sport.user }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Technology</h2>
+                        <div class="row cn-slider">
+                            {% for news_technology in news_technology %}
+                                <div class="col-md-6">
+                                    <div class="cn-img">
+                                        <img src="{{ news_technology.img.url }}" />
+                                        <div class="cn-content">
+                                            <div class="cn-content-inner">
+                                                <a class="cn-date" href="{% url 'new_detail' news_technology.id %}"><i class="far fa-clock"></i>{{ news_technology.update_at }}</a>
+                                                <a class="cn-title" href="{% url 'new_detail' news_technology.id %}">{{ news_technology.title|slice:'0:20' }}...</a>
+                                                <a class="cn-title" href="{% url 'new_detail' news_technology.id %}">{{ news_technology.user }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Category News End-->
+
+
+        <!-- Category News Start-->
+        <div class="cat-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Business</h2>
+                        <div class="row cn-slider">
+                            {% for news_business in news_business %}
+                            <div class="col-md-6">
+                                <div class="cn-img">
+                                    <img src="{{ news_business.img.url }}" />
+                                    <div class="cn-content">
+                                        <div class="cn-content-inner">
+                                            <a class="cn-date" href="{% url 'new_detail' news_business.id %}"><i class="far fa-clock"></i>{{ news_business.update_at }}</a>
+                                            <a class="cn-title" href="{% url 'new_detail' news_business.id %}">{{ news_business.title|slice:'0:20' }}...</a>
+                                            <a class="cn-title" href="{% url 'new_detail' news_business.id %}">{{ news_business.user }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>Entertainment</h2>
+                        <div class="row cn-slider">
+                            {% for news_entertainment in news_entertainment %}
+                            <div class="col-md-6">
+                                <div class="cn-img">
+                                    <img src="{{ news_entertainment.img.url }}" />
+                                    <div class="cn-content">
+                                        <div class="cn-content-inner">
+                                            <a class="cn-date" href="{% url 'new_detail' news_entertainment.id %}"><i class="far fa-clock"></i>{{ news_entertainment.update_at }}</a>
+                                            <a class="cn-title" href="{% url 'new_detail' news_entertainment.id %}">{{ news_entertainment.title|slice:'0:20' }}...</a>
+                                            <a class="cn-title" href="{% url 'new_detail' news_entertainment.id %}">{{ news_entertainment.user }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Category News End-->
+
+
+        <!-- Main News Start-->
+        <div class="main-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2><i class="fas fa-align-justify"></i>Latest News</h2>
+                                <div class="row">
+
+                                        <div class="col-md-6">
+                                        <div class="cn-img">
+                                            <img src="{{ latest_new.img.url }}" />
+                                            <div class="cn-content">
+                                            <div class="cn-content-inner">
+                                            <a class="cn-date" href="{% url 'new_detail' latest_new.id %}"><i class="far fa-clock"></i>{{ latest_new.update_at }}</a>
+                                            <a class="cn-title" href="{% url 'new_detail' latest_new.id %}">{{ latest_new.title|slice:'0:20' }}...</a>
+                                            <a class="cn-title" href="{% url 'new_detail' latest_new.id %}">{{ latest_new.user }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                    
+                            <div class="col-lg-6">
+                                {% for new in latest_news %}
+
+                                <div class="mn-list">
+                                    <div class="mn-img">
+                                            <img src="{{ new.img.url }}" />
+                                    </div>
+                                    <div class="mn-content">
+                                        <a class="mn-title" href="{% url 'new_detail' new.id %}">{{ new.title|slice:'0:25' }}...</a>
+                                        <a class="mn-date" href="{% url 'new_detail' new.id %}"><i class="far fa-clock"></i>{{ new.update_at }}</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="sidebar">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main News End-->
+
+{% endblock content %}
+      

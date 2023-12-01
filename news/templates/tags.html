@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ tag_name }}</h1>
+ 
+<p><b>Tags:</b> qidirilganlar soni - {{ object_list|length }} </p><br>
+<p></p>
+{% for new in object_list %}
+    <a href="{% url 'new_detail' new.id %}">{{ new.title }}</a>
+       
+    <p>{{ new.create_at }}</p>
+    <p>{{ new.user }}</p>
+    
+    <br>
+    <br>
+
+{% endfor %}
+<a href="{% url 'home' %}">Ortga qaytish</a>
+
+
+{% endblock content %}

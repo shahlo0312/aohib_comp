@@ -1,0 +1,16 @@
+{% extends "../base.html" %}
+
+{% block content %}
+
+{% if user.avatar %}
+    <img src="{{ user.avatar.url }}" alt="image" width="200" height="200">
+{% endif %}
+<h1>{{ user.username }}</h1>
+<h1>{{ user.first_name }}</h1>
+<h1>{{ user.last_name }}</h1>
+<h1>{{ user.email }}</h1>
+<h1>{{ user.address }}</h1>
+<h1>{{ user.phone }}</h1>
+<a href="{% url "accounts:my_profile_update" user.id%}">Update</a>/
+<a href="">ChangePassword</a>
+{% endblock content %}

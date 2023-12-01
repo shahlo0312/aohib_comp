@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<a href="{% url 'home' %}">Ortga qaytish</a>
+<button type="submit">Saqlash</button>
+</form>
+
+
+{% endblock content %}
+
+
+
+
+

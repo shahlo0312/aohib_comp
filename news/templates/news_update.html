@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="m-4">
+        <form method="post">{% csrf_token %}
+
+
+            <p>Yangilash</p><b>"{{ object }}?"</b><br><br>
+
+                {{ form.as_p }}
+                <input type="submit" value="Confirm">
+                <a  href="{% url 'new_detail' object.id %}">Cancel</a>
+        </form>
+</div>
+{% endblock content %}
